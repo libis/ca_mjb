@@ -309,7 +309,8 @@ class ca_entity_labels extends BaseLabel {
 		if (($t_entity = caGetOption('subject', $pa_options, null)) && ($t_entity->getTypeSetting('entity_class') == 'ORG')) {
 			$this->set('displayname', $this->get('surname'));
 		} elseif (!$this->get('displayname')) {
-			$this->set('displayname', trim(preg_replace('![ ]+!', ' ', $this->get('forename').' '.$this->get('middlename').' '.$this->get('surname'))));
+			$this->set('displayname', trim(preg_replace('![ ]+!', ' ', $this->get('middlename').' '.$this->get('surname').', '.$this->get('forename'))));
+			#$this->set('displayname', trim(preg_replace('![ ]+!', ' ', $this->get('forename').' '.$this->get('middlename').' '.$this->get('surname'))));
 		}
 		
 		return parent::insert($pa_options);
@@ -323,7 +324,8 @@ class ca_entity_labels extends BaseLabel {
 		if (($t_entity = caGetOption('subject', $pa_options, null)) && ($t_entity->getTypeSetting('entity_class') == 'ORG')) {
 			$this->set('displayname', $this->get('surname'));
 		} elseif (!$this->get('displayname')) {
-			$this->set('displayname', trim(preg_replace('![ ]+!', ' ', $this->get('forename').' '.$this->get('middlename').' '.$this->get('surname'))));
+			$this->set('displayname', trim(preg_replace('![ ]+!', ' ', $this->get('middlename').' '.$this->get('surname').', '.$this->get('forename'))));
+			#$this->set('displayname', trim(preg_replace('![ ]+!', ' ', $this->get('forename').' '.$this->get('middlename').' '.$this->get('surname'))));
 		}
 		return parent::update($pa_options);
 	}
